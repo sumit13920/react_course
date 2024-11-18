@@ -23,44 +23,52 @@ function App() {
       setAlert(null);
     }, 1500);
   }
-  const toggleMode = () => {
+
+  const removeBodyClasses=()=>{
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-dark')
+    document.body.classList.remove('bg-warning')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-success')
+  }
+  const toggleMode = (cls) => {
+    removeBodyClasses();
+    console.log(cls)
+    document.body.classList.add('bg-'+cls)
     if (mode === 'light') {
       setMode('dark');
       document.body.style.backgroundColor = '#1d3354';
-      showAlert("Dark mode has been enabled", "success");
-      document.title = "TextUtils - Dark Mode";
-      //***--This function is used to alternatly show these messages at the set interval of time.--***
-      // setInterval(()=>{
-      //   document.title = 'TextUtils is Amazing';
-      // },2000);
-      // setInterval(()=>{
-      //   document.title = 'Visit TextUtils Now';
-      // },1500);
+      showAlert("Dark mode has been enabled", "success"); 
     }
     else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode has been enabled", "success");
-      document.title = "TextUtils - Light Mode";
     }
 
   }
   return (
     <>
       <Router>
-        <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} />
+        <Navbar title="TextUtils"  aboutText="About"  mode={mode}  toggleMode={toggleMode} />
         <Alert alert={alert} />
 
         {/* <Navbar/>  */}
 
-        {/* <Navbar title="TextUtils"  /> */}
+        {/* <Navbar title="TextUtils" aboutText="About" /> */}
+
         <div className="container my-3">
           <Routes>
             {/* --/users--->Component 1
             /users/home-->-->Component 2 
             -->exact is used to to complete maching not the partial matching--*/}
-            <Route exact path="/about" element={<About />} />
-            <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />} />
+            
+            <Route exact path="/about" element={<About mode={mode}/>} />
+
+            <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Try TextUtils - Word Counter, Character Counter, Remove extra Spaces" mode={mode} />} />
+
+            {/* <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} /> */}
+            {/* <About /> */}
 
           </Routes>
         </div>
