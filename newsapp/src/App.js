@@ -9,7 +9,7 @@ import NavBar from './components/NavBar';
      return (
        <div>
          <NavBar/>
-         <News/> 
+         <News pageSize={6}/> 
        </div>
      )
    }
