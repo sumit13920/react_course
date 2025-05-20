@@ -1,9 +1,10 @@
 import connectToMongo from './db.js';
 import express from 'express';
-import authRouter from './routes/auth.js'; // Fixed import path
+import authRouter from './routes/auth.js';  
+import notesRouter from './routes/notes.js';
 
 const app = express();
-const port = process.env.PORT || 3000; // Better port handling
+const port = process.env.PORT || 5000; // Better port handling
 
 // Database connection with error handling
 (async () => {
@@ -21,6 +22,7 @@ app.use(express.json()); // Add JSON body parser
 
 // Routes
 app.use('/api/auth', authRouter);
+app.use('/api/notes', notesRouter);
 
 // Basic health check endpoint
 app.get('/', (req, res) => {
@@ -34,5 +36,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Server listening at  http://localhost:${port}`);
 });

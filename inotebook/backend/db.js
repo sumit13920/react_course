@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const connectToMongo = async () => {
-  const mongoURI = "mongodb://localhost:27017/";
+  const mongoURI = "mongodb://localhost:27017/inotebook1";
   try {
     await mongoose.connect(mongoURI);
     console.log("Connected to MongoDB");
