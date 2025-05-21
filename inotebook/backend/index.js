@@ -36,5 +36,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server listening at  http://localhost:${port}`);
+  console.log(`iNotebook backend listening at  http://localhost:${port}`);
 });
