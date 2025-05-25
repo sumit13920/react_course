@@ -1,13 +1,18 @@
-import React from 'react'
+import React from 'react';
 
 const Alert = (props) => {
-    return (
-        <div>
-            <div className="alert alert-primary" role="alert">
-                {props.message}
-            </div>
-        </div>
-    )
-}
+    const id = localStorage.getItem("id");
+    // console.log(id,"id to login")
 
-export default Alert
+    return (
+        <>
+            {id && (
+                <div className="alert alert-primary" role="alert">
+                    {props.message}
+                </div>
+            )}
+        </>
+    );
+};
+
+export default Alert;

@@ -102,7 +102,7 @@ useEffect(() => {
       throw new Error('You must be logged in to create notes');
     }
 
-    const response = await fetch(`${host}/api/notes/Addnote`, {
+    const response = await fetch(`${host}/api/notes/addnote`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
@@ -244,10 +244,10 @@ useEffect(() => {
     }
 
     // Store token and update state
-    localStorage.setItem('token', data.authtoken);
-     localStorage.setItem('id',  data?.user?._id);
-    setIsAuthenticated(true);
-    setUser(data.user);
+    // localStorage.setItem('token', data.authtoken);
+    //  localStorage.setItem('id',  data?.user?._id);
+    // setIsAuthenticated(true);
+    // setUser(data.user);
     
     // Automatically fetch empty notes list for new user
     await fetchNotes();

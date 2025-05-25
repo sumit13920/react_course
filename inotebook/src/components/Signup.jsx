@@ -13,9 +13,7 @@ const Signup = () => {
   const { registerUser, loading, isAuthenticated, error } = context;
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if(isAuthenticated) navigate('/');
-  }, [isAuthenticated, navigate]);
+
 
 
   const handleSubmit = async (e) => {
@@ -30,7 +28,11 @@ const Signup = () => {
         email: credentials.email,
         password: credentials.password
       });
-      if(result && result.user) {
+      console.log(result && result.user,"jhbdjsdj")
+      console.log(result ,"jhbdjsdj")
+      console.log( result.user,"jhbdjsdj")
+      if(result?.success) {
+        console.log("khfkjk")
         navigate('/login');
       }
     } catch (error) {

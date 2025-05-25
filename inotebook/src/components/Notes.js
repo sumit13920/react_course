@@ -8,6 +8,7 @@ const Notes = () => {
   const navigate = useNavigate();
   const context = useContext(noteContext);
   const { notes, getNotes,deleteNote,editNote, loading, error, isAuthenticated } = context;
+  console.log(notes,"notes:::::")
   const id = localStorage.getItem("id");
   useEffect(() => {
     if (!isAuthenticated) {
