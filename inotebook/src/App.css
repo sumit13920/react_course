@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+.notesList{
+  display: flex;
+}
+.notesItem{
+  width: fit-content;
+}
+.noteListParent{
+  width: fit-content;
+}
+.edit-Parent{
+  position:absolute;
+  background-color: red;
+}

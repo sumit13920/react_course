@@ -3,27 +3,36 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const NotesSchema = new Schema({
-    user:{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'user',
+        required: true
     },
     title: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     description: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     tag: {
         type: String,
-        default: "General"
+        default: "General",
+        trim: true
     },
     date: {
         type: Date,
-        default: Date.now
-    },
+        default: Date.now,
+        immutable: true // Prevent modification after creation
+    }
+}, {
+    timestamps: true    // Adds createdAt and updatedAt automatically
 });
 
-// Export using ES modules syntax
+ // Index for faster user-based queries
+NotesSchema.index({ user: 1 }); 
+
 export default mongoose.model('notes', NotesSchema);
